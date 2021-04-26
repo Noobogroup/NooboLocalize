@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:VisualElement style="flex-direction: row; -unity-text-align: middle-left; padding: 3; background-color: #5A5B5C; border-color:#2A2C2F; border-width:1px;">
+        <engine:Image name="icon" style="width: 25px; height: 25px; margin: 3px;" />
+        <engine:Label name="title" style="flex-grow: 1;" />
+        <engine:Button name="edit" text="Edit"/>
+    </engine:VisualElement>
+</engine:UXML>

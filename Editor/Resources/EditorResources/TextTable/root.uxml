@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:VisualElement>
+        <engine:VisualElement id="table">
+            <engine:VisualElement style="flex-direction: row; justify-content: flex-start; margin:0;">
+                <engine:Button text="Back" name="back" class="btn-back"/>
+                <engine:VisualElement style="flex-grow:1;" />
+                <engine:TextField name="rename" class="text-rename"/>
+                <engine:Button name="btn-rename" text="Rename" class="btn-rename"/>
+            </engine:VisualElement>
+            <engine:VisualElement class="table-header">
+                <engine:Label name="text-table-header"/>
+            </engine:VisualElement>
+            <engine:VisualElement>
+                <engine:VisualElement class="table-content-header-parent" name="header">
+                    <engine:TextElement text="id" class="table-content-header" />
+                </engine:VisualElement>
+                <engine:VisualElement name="rows">
+                    
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement class="table-footer">
+                <engine:Button text="-" name="remove-entry"/>
+                <engine:Button text="+" name="add-entry"/>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-direction: row; margin-top:10px; justify-content: center;">
+            <engine:Button name="btn-remove" text="Remove Table" style="padding: 5px;"/>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

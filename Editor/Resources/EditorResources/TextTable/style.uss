@@ -1,0 +1,102 @@
+﻿VisualElement 
+{
+}
+
+.table-header
+{
+    margin-top:5px;
+    background-color: #6A6B6C;
+    height:15px;
+    -unity-font-style:bold;
+    font-size: 16px;
+    -unity-text-align: middle-center;
+    border-radius: 10px 10px 10px 10px;
+    padding: 18px;
+}
+
+.table-footer{
+    padding: 3px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #4A4B4C;
+    border-radius: 0 0 10px 10px;
+}
+
+.table-content-header-parent
+{
+    padding: 3px 10px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.table-content-header
+{
+    padding:5px;
+    border-color:#000;
+    border-right-width:1px;
+    border-top-width:1px;
+    flex-basis: 0;
+    flex-grow:1;
+    background-color: #4A4B4C;
+    -unity-text-align: middle-center;
+    border-radius: 10px 10px 0 0;
+}
+
+.table-row
+{
+    padding-top:3px;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 60px;
+}
+
+.table-row-content-parent 
+{
+    padding: 3px 10px;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.table-row-content
+{
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 2px;
+}
+
+.table-row-content TextInput
+{
+    -unity-text-align: upper-left;
+    white-space: normal;
+}
+
+.btn-back
+{
+    margin-top: 5px;
+    padding:4px;
+}
+
+.btn-rename
+{
+    margin-top: 5px;
+    padding:4px;
+}
+
+.text-rename
+{
+    margin-top: 5px;
+    flex-grow: 1;    
+    flex-basis: 0;
+}
+
+.image-table-row-content
+{
+    width: 60px;
+    height: 60px;
+    background-color: black;
+}
+

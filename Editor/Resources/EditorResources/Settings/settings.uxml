@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:Label text="Noobo Localize" style="-unity-text-align: middle-center; padding: 10px;"/>
+    
+    <engine:VisualElement name="locale-selector">
+    </engine:VisualElement>
+    
+    <engine:VisualElement>
+        <engine:Label text="Localized Tables" style="-unity-text-align: middle-center; margin-top:20px; -unity-font-style: bold;"/>
+        <engine:VisualElement class="tables-container" name="tables-container">
+        </engine:VisualElement>
+    </engine:VisualElement>
+    <engine:VisualElement style="flex-direction: row; justify-content: center; margin-top: 5px;">
+        <engine:Button name="AddImageTable" text="Create New Image Table" style="padding: 5px;" />
+        <engine:Button name="AddTextTable" text="Create New Text Table" style="padding: 5px;"/>
+    </engine:VisualElement>
+</engine:UXML>
