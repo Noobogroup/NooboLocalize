@@ -28,7 +28,7 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
         }
         
 
-        internal void LocalizeUpdate()
+        public void LocalizeUpdate()
         {
             Initialize();
             
