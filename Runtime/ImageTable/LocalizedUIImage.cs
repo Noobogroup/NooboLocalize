@@ -25,7 +25,7 @@ namespace NooboPackage.NooboLocalize.Runtime.ImageTable
         }
         
 
-        internal void LocalizeUpdate()
+        public void LocalizeUpdate()
         {
             Initialize();
             
