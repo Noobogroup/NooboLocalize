@@ -4,7 +4,7 @@ namespace NooboPackage.NooboLocalize.Runtime
 {
     public static class LocalizedUtility
     {
-        internal static string Localized(this int num, string format = "")
+        public static string Localized(this int num, string format = "")
         {
             if (!NooboLocalizeSettings.CurrentLocale().overrideNumberCharacterSet)
                 return num.ToString(format);
