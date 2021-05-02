@@ -13,6 +13,7 @@ namespace NooboPackage.NooboLocalize.Editor
         public override VisualElement CreateInspectorGUI()
         {
             var root = new VisualElement();
+
             var table = new ObjectField {label = "Table", bindingPath = "id.table"};
             table.Bind(serializedObject);
             table.objectType = typeof(LocalizedTextTable);
@@ -57,7 +58,37 @@ namespace NooboPackage.NooboLocalize.Editor
             while (b.childCount > 0)
                 b.RemoveAt(0);
 
-            b.Add(new Label("no text table selected."));
+            b.Add(new Label("no text table selected.")
+                {style = {unityTextAlign = TextAnchor.MiddleCenter, marginBottom = 10}});
+
+            AddAlignAndFont(b);
+        }
+
+        private void NoKeyInTable(VisualElement root)
+        {
+            var b = root.Q<Box>("container");
+
+            while (b.childCount > 0)
+                b.RemoveAt(0);
+
+            b.Add(new Label("There's no key in selected text table.")
+                {style = {unityTextAlign = TextAnchor.MiddleCenter, marginBottom = 10}});
+
+            AddAlignAndFont(b);
+        }
+
+
+        private void AddAlignAndFont(VisualElement b)
+        {
+            var align = new Toggle("Inherit Alignment") {bindingPath = "inheritAlignment"};
+            b.Add(align);
+            align.Bind(serializedObject);
+            align.binding.Update();
+
+            var font = new Toggle("Inherit Font") {bindingPath = "inheritFont"};
+            b.Add(font);
+            font.Bind(serializedObject);
+            font.binding.Update();
         }
 
         private void CreateTableKeySelector(VisualElement root)
@@ -73,14 +104,11 @@ namespace NooboPackage.NooboLocalize.Editor
             var keys = t.id.table.entries.Select(entry => entry.key).ToList();
             if (keys.Count < 1)
             {
-                while (b.childCount > 0)
-                    b.RemoveAt(0);
-
-                b.Add(new Label("There's no key in selected text table."));
+                NoKeyInTable(root);
                 return;
             }
 
-            var keyOptions = new PopupField<string>(keys, 0);
+            var keyOptions = new PopupField<string>(keys, 0) {style = {marginBottom = 10}};
             keyOptions.label = "Key";
             try
             {
@@ -97,8 +125,8 @@ namespace NooboPackage.NooboLocalize.Editor
                 b.RemoveAt(0);
 
             b.Add(keyOptions);
-            b.Add(new Toggle("Inherit Alignment") {bindingPath = "inheritAlignment"});
-            b.Add(new Toggle("Inherit Font") {bindingPath = "inheritFont"});
+
+            AddAlignAndFont(b);
         }
     }
 }

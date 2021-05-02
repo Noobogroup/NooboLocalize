@@ -10,33 +10,26 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
         [SerializeField] private bool inheritAlignment = true;
         [SerializeField] private bool inheritFont = true;
         
-        private TMP_Text _targetComponent;
-        private bool _initialized = false;
+        [SerializeField] private TMP_Text targetComponent;
         private void Awake()
         {
-            Initialize();
             LocalizeUpdate();
         }
-
-        private void Initialize()
-        {
-            if(_initialized)
-                return;
-
-            _initialized = true;
-            _targetComponent = GetComponent<TMP_Text>();
-        }
         
-
         public void LocalizeUpdate()
         {
-            Initialize();
-            
-            _targetComponent.text = LocalizeLoader.GetText(id.table, id.key);
             if (inheritAlignment)
-                _targetComponent.alignment = NooboLocalizeSettings.CurrentLocale().align;
+                targetComponent.alignment = NooboLocalizeSettings.CurrentLocale().align;
             if(inheritFont)
-                _targetComponent.font = NooboLocalizeSettings.CurrentLocale().customTMPFont;
+                targetComponent.font = NooboLocalizeSettings.CurrentLocale().customTMPFont;
+            
+            if(id != null && id.table != null)
+                targetComponent.text = LocalizeLoader.GetText(id.table, id.key);
+        }
+
+        private void OnValidate()
+        {
+            targetComponent = GetComponent<TMP_Text>();
         }
     }
 }
