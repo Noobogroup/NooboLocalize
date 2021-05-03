@@ -31,6 +31,8 @@
         </engine:VisualElement>
         <engine:VisualElement style="flex-direction: row; margin-top:10px; justify-content: center;">
             <engine:Button name="btn-remove" text="Remove Table" style="padding: 5px;"/>
+            <engine:VisualElement style="flex-basis:0; flex-grow:1;" />
+            <engine:Button name="btn-import-csv" text="Import from CSV file . . ." style="padding: 5px;"/>
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

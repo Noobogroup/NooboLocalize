@@ -8,6 +8,7 @@ namespace NooboPackage.NooboLocalize
     [Serializable]
     public class Locale : ScriptableObject
     {
+        public bool isRtl;
         public TMP_FontAsset customTMPFont;
         [Space(10)]
         public TextAlignmentOptions align;

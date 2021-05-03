@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace NooboPackage.NooboLocalize.Runtime.TextTable
@@ -14,6 +13,7 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
         }
 
         public override void AddNewEntry() => entries.Add(new LocalizedTextTableEntry());
+        public void AddNewEntry(LocalizedTextTableEntry entry) => entries.Add(entry);
         
 
         public override void RemoveEntryAt(int index) => entries.RemoveAt(index);
