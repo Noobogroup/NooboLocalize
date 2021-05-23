@@ -30,7 +30,12 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
             }
 
             if (inheritFont)
+            {
+                var m = new Material(NooboLocalizeSettings.CurrentLocale().customTMPFont.material);
+                TMP_MaterialManager.CopyMaterialPresetProperties(targetComponent.fontMaterial, m);
                 targetComponent.font = NooboLocalizeSettings.CurrentLocale().customTMPFont;
+                targetComponent.fontMaterial = m;
+            }
 
             if (id != null && id.table != null)
                 if (NooboLocalizeSettings.CurrentLocale().isRtl)

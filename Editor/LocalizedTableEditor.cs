@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
+using FileHelpers.Options;
 using NooboPackage.NooboLocalize.Runtime;
 using NooboPackage.NooboLocalize.Runtime.TextTable;
 using UnityEditor;
@@ -153,25 +155,22 @@ namespace NooboPackage.NooboLocalize.Editor
             if(string.IsNullOrEmpty(addr))
                 return;
 
-            var data = File.ReadAllLines(addr);
-
-            if (data.Length < 1)
-                throw new Exception("No data in csv file");
-
-            var headers = data[0].Split(',');
+            // var data = File.ReadAllLines(addr);
             
-            CsvCheckHeaders(headers);
+            var data = FileHelpers.CsvEngine.CsvToDataTable(addr, ',');
+            
+            CsvCheckHeaders(data.Columns);
 
-            for(var j = 1; j < data.Length; j++)
+            for(var j = 0; j < data.Rows.Count; j++)
             {
                 var entry = new LocalizedTextTableEntry();
-                var lineData = data[j].Split(',');
+                var lineData = data.Rows[j].ItemArray.Cast<string>().ToList();
 
                 entry.key = lineData[0];
 
-                for (var i = 1; i < lineData.Length; i++)
+                for (var i = 1; i < lineData.Count; i++)
                 {
-                    entry.translation[headers[i]] = lineData[i];
+                    entry.translation[data.Columns[i].Caption.Replace('_','-')] = lineData[i];
                 }
                 
                 (target as LocalizedTextTable)?.AddNewEntry(entry);
@@ -183,16 +182,16 @@ namespace NooboPackage.NooboLocalize.Editor
             UpdateEntries(root);
         }
 
-        private void CsvCheckHeaders(string[] headers)
+        private void CsvCheckHeaders(DataColumnCollection headers)
         {
-            if (headers[0] != "key")
+            if (headers[0].Caption != "key")
                 throw new Exception("No 'key' in headers.");
             
             var locales = Resources.LoadAll<Locale>("NooboLocalize/Locales");
             
-            for(var i = 1; i < headers.Length; i++)
-                if (!locales.Select(l => l.name).Contains(headers[i]))
-                    throw new Exception("Bad locale in csv file");
+            for(var i = 1; i < headers.Count; i++)
+                if (!locales.Select(l => l.name).Contains(headers[i].Caption.Replace('_', '-')))
+                    throw new Exception($"Bad locale in csv file. {headers[i].Caption.Replace('_', '-')}");
         }
 
         private VisualElement NewHeader(Locale locale)
