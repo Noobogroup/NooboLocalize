@@ -179,6 +179,8 @@ namespace NooboPackage.NooboLocalize.Editor
             serializedObject.ApplyModifiedProperties();
             serializedObject.Update();
             
+            EditorUtility.SetDirty(serializedObject.targetObject);
+            
             UpdateEntries(root);
         }
 
