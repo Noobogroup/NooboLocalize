@@ -38,10 +38,15 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
             }
 
             if (id != null && id.table != null)
-                if (NooboLocalizeSettings.CurrentLocale().isRtl)
-                    targetComponent.SetText(new string(LocalizeLoader.GetText(id.table, id.key).Reverse().ToArray()));
-                else
-                    targetComponent.SetText(LocalizeLoader.GetText(id.table, id.key));
+                SetText(LocalizeLoader.GetText(id.table, id.key));
+        }
+
+        public void SetText(string text)
+        {
+            if (NooboLocalizeSettings.CurrentLocale().isRtl)
+                targetComponent.SetText(new string(text.Reverse().ToArray()));
+            else
+                targetComponent.SetText(text);
         }
 
         private void OnValidate()

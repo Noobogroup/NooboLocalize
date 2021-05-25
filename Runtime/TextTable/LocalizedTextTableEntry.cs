@@ -14,5 +14,11 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
             key = "NewEntry";
             translation = new Translation();
         }
+
+        public LocalizedTextTableEntry(string key, Translation translation)
+        {
+            this.key = key;
+            this.translation = translation;
+        }
     }
 }
