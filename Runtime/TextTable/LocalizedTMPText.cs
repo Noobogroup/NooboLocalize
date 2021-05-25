@@ -43,7 +43,7 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
 
         public void SetText(string text)
         {
-            if (NooboLocalizeSettings.CurrentLocale().isRtl)
+            if (NooboLocalizeSettings.CurrentLocale().isRtl && inheritAlignment)
                 targetComponent.SetText(new string(text.Reverse().ToArray()));
             else
                 targetComponent.SetText(text);
