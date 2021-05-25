@@ -84,6 +84,11 @@ namespace NooboPackage.NooboLocalize.Editor
             b.Add(align);
             align.Bind(serializedObject);
             align.binding.Update();
+            
+            var direction = new Toggle("Inherit Direction") {bindingPath = "inheritDirection"};
+            b.Add(direction);
+            direction.Bind(serializedObject);
+            direction.binding.Update();
 
             var font = new Toggle("Inherit Font") {bindingPath = "inheritFont"};
             b.Add(font);
