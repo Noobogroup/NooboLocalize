@@ -16,6 +16,8 @@ namespace NooboPackage.NooboLocalize.Runtime
 
         private List<Locale> _locales;
         
+        public static Locale[] Locales => _._locales.ToArray();
+        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Initialize()
         {
