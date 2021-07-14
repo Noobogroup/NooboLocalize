@@ -37,5 +37,15 @@ namespace NooboPackage.NooboLocalize.Runtime.TextTable
             for(var i = 0; i < keys.Count; i++)
                 this[keys[i]] = values[i];
         }
+        
+        public static Translation SameForAll(string txt)
+        {
+            var trans = new Translation();
+            foreach (var locale in NooboLocalizeSettings.Locales)
+            {
+                trans.Add(locale.name, txt);
+            }
+            return trans;
+        }
     }
 }
